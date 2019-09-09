@@ -37,7 +37,7 @@ On the next renewal we would need to decide the next term of the code-signing ce
 
 ## Renewing the Certificate
 
-Once the time have come, and we would need to renew the certificate, we will log-in to the **DigiCert** control panel and would renew the certificate.
+Once the time have come, and we would need to renew the certificate, we will log-in to the [**DigiCert**](https://www.digicert.com/custsupport/certificate-manager.php) control panel and would renew the certificate.
 We must see that we choose the **Code Signing** certificate type and choosing it to be `Microsoft Authenticode`.
 Once the order will be proccessed, the account that issued the request, will recive a link to create the certificate file.
 We will recive the `.cert` file after the process is finished,
@@ -49,7 +49,15 @@ It would be best to follow the **DigiCert** offical guide and tutorial that can 
 > It is highly important that we will export the .pfx file **including  the private key**
 
 The password is a very important part, that needs to be remembered and also to be provided under the build config in the build agents.
-I wouldn't provide the passphrase here, but it can be found under the `CSC_KEY_PASSWORD` variable in anyone of the `Windows Build` agents (Production and Staging alike)
+I wouldn't provide the passphrase here, but it can be found under the `CSC_KEY_PASSWORD` variable in anyone of the `Windows Build` 
+agents (Production and Staging alike)
+
+**Please remove the `.cert` file once done**
+
+### In case we lost the `.pfx` file
+We can always create a new `.cert` file be requesitng a `re-key` of the certificate [here](https://www.digicert.com/custsupport/order-details.php?order_id=04410925)
+
+Please be ***really*** careful when rekeying the certificate, it might be revoking the old ones.
 
 ## Uploading the certificate to the build agents
 
